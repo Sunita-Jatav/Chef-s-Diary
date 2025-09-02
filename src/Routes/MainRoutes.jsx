@@ -5,12 +5,14 @@ import About from '../Pages/About'
 import { Routes } from 'react-router-dom'
 import { Route } from 'react-router-dom'
 import CreateRecipe from '../Pages/CreateRecipe'
+import SingleRecipe from '../Pages/SingleRecipe'
 const MainRoutes = () => {
   return (
     <div>
       <Routes>
         <Route path='/' element={<Home/>}></Route>
         <Route path='/recipes' element={<Recipes/>}></Route>
+        <Route path='/recipes/details/:id' element={<SingleRecipe/>}></Route>
         <Route path='/about' element={<About/>}></Route>
         <Route path='/create-recipe' element={<CreateRecipe/>}></Route>
       </Routes>

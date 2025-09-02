@@ -4,7 +4,7 @@ import MainRoutes from './Routes/MainRoutes'
 
 const App = () => {
   return (
-    <div className='w-screen h-auto '>
+    <div className='h-screen bg-[#0D0D0D] text-white'>
       <Navbar/>
       <MainRoutes/>
     </div>

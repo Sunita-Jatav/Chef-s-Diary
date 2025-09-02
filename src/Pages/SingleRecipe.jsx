@@ -1,34 +1,68 @@
-import React, { useContext } from "react";
-import { recipecontext } from "../Context/RecipeContext";
-import { useForm } from "react-hook-form";
-import { nanoid } from "nanoid";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import React, { useContext } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import { recipecontext}  from '../Context/RecipeContext'
+import { useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 
-const CreateRecipe = () => {
-  const { data, setData } = useContext(recipecontext);
+
+const SingleRecipe = () => {
+  
+ const {data,setData} = useContext(recipecontext)
   const navigate = useNavigate();
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
+  const params = useParams();
 
-  const submitHandler = (recipe) => {
-    recipe.id = nanoid();
-    setData([...data, recipe]);
-    toast.success("Recipe Created Successfully")
-    reset();
-    navigate('/recipes')
-  };
-
-  return (
-    <div className="w-full h-full box-border  bg-[#0D0D0D] text-white p-10 bg-[url('https://media.istockphoto.com/id/1151010917/photo/flying-chicken-and-vegetable-stir-fry-into-a-frying-pan.jpg?s=1024x1024&w=is&k=20&c=W46MEmrziZVU_iVyVTjj24WnqLgb_t_nGcMs2fEbd5o=')] bg-cover bg-[position:20%_30%]">
+  const recipe = data.find((recipe) =>{
+    return params.id == recipe.id
+  })
   
-      <form
-        className="space-y-4 max-w-lg mx-auto font-medium text-lg "
+  const {
+      register,
+      handleSubmit,
+      reset,
+      formState: { errors },
+    } = useForm({defaultValues :{
+      imageUrl : recipe.imageUrl,
+      title : recipe.title,
+      category : recipe.category,
+      description : recipe.description,
+      ingredients : recipe.ingredients,
+      steps : recipe.steps
+    }});
+  
+    const submitHandler = (recipe) => {
+      // console.log(recipe)
+      const index = data.findIndex((r)=> params.id == r.id)
+      const copyData = [...data];
+      copyData[index] = {...copyData[index],...recipe}
+      setData(copyData)
+      reset(recipe)
+      toast.success("recipe Updated Successfully!")
+    };
+    // console.log(data)
+  
+   const deleteHandler = (id)=>{
+      const filtered = data.filter((recipe) => recipe.id != params.id)
+      setData(filtered)
+      toast.success("Recipe Deleted")
+      navigate('/recipes')
+   }
+  return recipe? <div className='p-5 h-full bg-[#0D0D0D] flex'>
+    <div className='left  w-1/2 text-center'>
+      <h1 className='text-5xl tracking-tight mb-1'>{recipe.title}</h1>
+      <h2 className='text-lg'>Category : {recipe.category}</h2>
+    <img className=' mt-3 w-150 h-90 object-cover mx-auto rounded mb-5' src={recipe.imageUrl} alt="" />
+    <li className='text-xl mb-3'>Ingredients : {recipe.ingredients}</li>
+    <li  className='text-xl mb-3'>Description : {recipe.description}</li>
+    <li  className='text-xl'>Instructions : {recipe.steps}</li>
+  
+    </div>
+    <div className='right w-1/2  font-medium text-xl p-2'>
+    <h1 className="text-3xl font-thin text-center text-white mb-4">
+  Edit or Delete Recipe
+</h1>
+       <form
+        className="space-y-4 max-w-lg mx-auto font-thin text-lg "
         onSubmit={handleSubmit(submitHandler)}
       >
         <div className="bg-[#0D0D0D] px-6 py-2 rounded">
@@ -114,14 +148,13 @@ const CreateRecipe = () => {
             <span className="text-red-500 text-sm">Steps are required</span>
           )}
         </div>
-
-        <button className="bg-white text-black  px-6 py-2 text-xl rounded w-full hover:bg-[#0D0D0D] hover:text-white hover:scale-95 duration-150 transition">
-          Save Recipe
-        </button>
-      </form>
+        <button type='submit' className='ml-20 mr-10 bg-blue-950 px-5 py-2 rounded text-xl font-thin hover:scale-95'>Update Recipe</button>
+        <button onClick={()=>deleteHandler(recipe.id)} className=' bg-red-900 px-5 py-2 rounded text-xl font-thin hover:scale-95'>Delete Recipe</button>  
+        </form>
+       
+       
     </div>
-  );
-};
+  </div> :<div className='p-15'>"Loading..."</div>;
+}
 
-export default CreateRecipe;
-
+export default SingleRecipe
