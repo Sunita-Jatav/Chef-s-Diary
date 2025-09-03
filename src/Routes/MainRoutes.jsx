@@ -6,6 +6,8 @@ import { Routes } from 'react-router-dom'
 import { Route } from 'react-router-dom'
 import CreateRecipe from '../Pages/CreateRecipe'
 import SingleRecipe from '../Pages/SingleRecipe'
+import SignIn from '../Pages/SignIn'
+import SignUp from '../Pages/SignUp'
 const MainRoutes = () => {
   return (
     <div>
@@ -15,6 +17,8 @@ const MainRoutes = () => {
         <Route path='/recipes/details/:id' element={<SingleRecipe/>}></Route>
         <Route path='/about' element={<About/>}></Route>
         <Route path='/create-recipe' element={<CreateRecipe/>}></Route>
+        <Route path='/sign-in' element={<SignIn/>}></Route>
+        <Route path='/sign-up' element={<SignUp/>}></Route>
       </Routes>
     </div>
   )

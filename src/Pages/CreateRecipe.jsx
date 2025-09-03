@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { recipecontext } from "../Context/RecipeContext";
 import { useForm } from "react-hook-form";
 import { nanoid } from "nanoid";
@@ -6,9 +6,16 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const CreateRecipe = () => {
-  const { data, setData } = useContext(recipecontext);
+  const { data, setData , currentUser , setCurrentUser} = useContext(recipecontext);
+
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (!currentUser) {
+      toast.error("Please sign in first to create your recipe!");
+      navigate("/sign-in");
+    }
+  }, [currentUser, navigate]);
   const {
     register,
     handleSubmit,

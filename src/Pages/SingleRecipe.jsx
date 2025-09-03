@@ -48,6 +48,7 @@ const SingleRecipe = () => {
       navigate('/recipes')
    }
   return recipe? <div className='p-5 h-full bg-[#0D0D0D] flex'>
+    <i class="ri-arrow-left-line text-2xl p-0 hover:text-blue-500" onClick={()=>navigate('/recipes')}></i>
     <div className='left  w-1/2 text-center'>
       <h1 className='text-5xl tracking-tight mb-1'>{recipe.title}</h1>
       <h2 className='text-lg'>Category : {recipe.category}</h2>
