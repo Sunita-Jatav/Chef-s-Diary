@@ -25,14 +25,17 @@ const CreateRecipe = () => {
 
   const submitHandler = (recipe) => {
     recipe.id = nanoid();
+    recipe.userId = currentUser.id;
     setData([...data, recipe]);
+
     toast.success("Recipe Created Successfully")
     reset();
     navigate('/recipes')
   };
+  // console.log(data)
 
   return (
-    <div className="w-full h-full box-border  bg-[#0D0D0D] text-white p-10 bg-[url('https://media.istockphoto.com/id/1151010917/photo/flying-chicken-and-vegetable-stir-fry-into-a-frying-pan.jpg?s=1024x1024&w=is&k=20&c=W46MEmrziZVU_iVyVTjj24WnqLgb_t_nGcMs2fEbd5o=')] bg-cover bg-[position:20%_30%]">
+    <div className="w-full h-full box-border  bg-[#0D0D0D] text-white p-10 bg-[url('https://media.istockphoto.com/id/1151010917/photo/flying-chicken-and-vegetable-stir-fry-into-a-frying-pan.jpg?s=1024x1024&w=is&k=20&c=W46MEmrziZVU_iVyVTjj24WnqLgb_t_nGcMs2fEbd5o=')] bg-cover bg-[position:10%_18%]">
   
       <form
         className="space-y-4 max-w-lg mx-auto font-medium text-lg "
@@ -61,6 +64,19 @@ const CreateRecipe = () => {
           />
           {errors.title && (
             <span className="text-red-500 text-sm">Title is required</span>
+          )}
+        </div>
+
+        <div className="bg-[#0D0D0D] px-6 py-2 rounded">
+          <label className="block mb-1 font-semibold">Chef's Name:</label>
+          <input
+            type="text"
+            placeholder="Your Name"
+            {...register("chefName", { required: true })}
+            className="w-full p-2 rounded border-b border-white outline-none"
+          />
+          {errors.chefName && (
+            <span className="text-red-500 text-sm">Name is required</span>
           )}
         </div>
 
@@ -120,6 +136,15 @@ const CreateRecipe = () => {
           {errors.steps && (
             <span className="text-red-500 text-sm">Steps are required</span>
           )}
+        </div>
+
+         <div className="bg-[#0D0D0D] px-6 py-2 rounded">
+          <label className="block mb-1 font-semibold">Share your recipe story:</label>
+          <textarea
+            placeholder="Personal story"
+            {...register("story")}
+            className="w-full p-2 rounded border-b border-white outline-none"
+          ></textarea>
         </div>
 
         <button className="bg-white text-black  px-6 py-2 text-xl rounded w-full hover:bg-[#0D0D0D] hover:text-white hover:scale-95 duration-150 transition">

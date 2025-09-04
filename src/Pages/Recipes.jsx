@@ -15,7 +15,7 @@ const Recipes = () => {
     <div className="px-6 py-5 bg-[#0D0D0D] min-h-screen">
       {/* Search Bar */}
       <div className="mb-6 flex gap-5 justify-center">
-        <i class="ri-search-line text-2xl"></i>
+        <i className="ri-search-line text-2xl"></i>
         <input
           type="text"
           placeholder="Search recipes..."

@@ -39,8 +39,8 @@ const SignIn = () => {
 
   return (
     <div className="w-full h-screen bg-[#0D0D0D] flex items-center justify-center">
-      <div className="bg-gray-900 w-[28rem] p-8 rounded-2xl shadow-xl">
-        <h1 className="text-4xl font-bold mb-6 text-white text-center hover:underline">
+      <div className=" w-[29rem] p-8 rounded-2xl shadow-xl h-[24rem]">
+        <h1 className="text-4xl font-bold mb-10 text-white text-center hover:underline">
           Sign In
         </h1>
 
@@ -51,11 +51,7 @@ const SignIn = () => {
             <input
               type="email"
               placeholder="Email"
-              className={`w-full pl-10 px-4 py-2 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 ${
-                errors.email
-                  ? "border border-red-500 focus:ring-red-500"
-                  : "border border-gray-700 focus:ring-blue-500"
-              }`}
+              className=' ml-4 w-full px-4 py-2  text-white border-b focus:outline-none'
               {...register("email", {
                 required: "Email is required",
                 pattern: {
@@ -75,11 +71,7 @@ const SignIn = () => {
             <input
               type="password"
               placeholder="Password"
-              className={`w-full pl-10 px-4 py-2 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 ${
-                errors.password
-                  ? "border border-red-500 focus:ring-red-500"
-                  : "border border-gray-700 focus:ring-blue-500"
-              }`}
+              className=' ml-4 w-full px-4 py-2  text-white border-b focus:outline-none'
               {...register("password", {
                 required: "Password is required",
                 minLength: {
@@ -96,7 +88,7 @@ const SignIn = () => {
           </div>
 
           {/* Submit Button */}
-     <div className="flex justify-around">
+     <div className="flex justify-around p-5">
   {/* Sign In Button */}
   <button
     type="submit"
@@ -116,6 +108,15 @@ const SignIn = () => {
 </div>
 
         </form>
+        <p className="text-center text-gray-300 mt-6">
+  New User?{" "}
+  <span
+    onClick={() => navigate("/sign-up")}
+    className="text-blue-400 font-semibold cursor-pointer hover:underline"
+  >
+    Sign Up
+  </span>
+</p>
       </div>
     </div>
   );

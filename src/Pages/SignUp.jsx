@@ -27,7 +27,7 @@ const SignUp = () => {
 
   return (
     <div className="w-full h-screen bg-[#0D0D0D] flex items-center justify-center">
-      <div className="bg-gray-900 w-[28rem] p-8 rounded-2xl shadow-xl">
+      <div className=" w-[28rem] p-8 rounded shadow-xl">
         <h1 className="text-4xl font-bold mb-6 text-white text-center hover:underline">
           Sign Up
         </h1>
@@ -38,11 +38,7 @@ const SignUp = () => {
             <input
               type="text"
               placeholder="Name"
-              className={`w-full px-4 py-2 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 ${
-                errors.name
-                  ? "border border-red-500 focus:ring-red-500"
-                  : "border border-gray-700 focus:ring-blue-500"
-              }`}
+              className='w-full px-4 py-2  text-white border-b focus:outline-none'
               {...register("name", { required: "Name is required" })}
             />
             {errors.name && (
@@ -55,11 +51,7 @@ const SignUp = () => {
             <input
               type="email"
               placeholder="Email"
-              className={`w-full px-4 py-2 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 ${
-                errors.email
-                  ? "border border-red-500 focus:ring-red-500"
-                  : "border border-gray-700 focus:ring-blue-500"
-              }`}
+              className='w-full px-4 py-2  text-white border-b focus:outline-none'
               {...register("email", {
                 required: "Email is required",
                 pattern: {
@@ -80,11 +72,7 @@ const SignUp = () => {
             <input
               type="password"
               placeholder="Password"
-              className={`w-full px-4 py-2 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 ${
-                errors.password
-                  ? "border border-red-500 focus:ring-red-500"
-                  : "border border-gray-700 focus:ring-blue-500"
-              }`}
+             className='w-full px-4 py-2  text-white border-b focus:outline-none'
               {...register("password", {
                 required: "Password is required",
                 minLength: {
@@ -103,7 +91,7 @@ const SignUp = () => {
           
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
+            className="w-full mt-8 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
           >
             Sign Up
           </button>
