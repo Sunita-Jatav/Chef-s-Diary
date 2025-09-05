@@ -41,6 +41,8 @@ const Home = () => {
   Every recipe tells a story, share yours and relive the memories on a plate.
 </p>
     </div>
+
+    
   )
 }
 
