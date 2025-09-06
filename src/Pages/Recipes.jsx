@@ -10,7 +10,7 @@ const Recipes = () => {
   const filteredRecipes = data.filter((recipe) =>
     recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
+   
   return (
     <div className="px-6 py-5 bg-[#0D0D0D] min-h-screen">
       {/* Search Bar */}
