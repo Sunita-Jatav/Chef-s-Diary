@@ -29,6 +29,8 @@ const UpdateDelete = () => {
       steps : recipe?.steps,
       story : recipe?.story
     }});
+     
+    const fav = JSON.parse(localStorage.getItem("fav")) ||[]
 
     const submitHandler = (recipe) => {
       // console.log(recipe)
@@ -45,6 +47,12 @@ const UpdateDelete = () => {
       const filtered = data.filter((recipe) => recipe.id != params.id)
       setData(filtered)
       localStorage.setItem("recipes", JSON.stringify(filtered))
+
+      const fav = JSON.parse(localStorage.getItem("fav")) || [];
+      const filteredFav = fav.filter(
+      (recipe) => (recipe.id) !== (params.id));
+      localStorage.setItem("fav", JSON.stringify(filteredFav));
+
       toast.success("Recipe Deleted")
       navigate('/recipes')
    }
