@@ -22,13 +22,14 @@ const SignIn = () => {
   } = useForm();
 
   const submitHandler = (formData) => {
-    // Check if a user with this email and password exists
+   
     const user = userdata.find(
       (u) => u.email === formData.email && u.password === formData.password
     );
 
     if (user) {
       setCurrentUser(user);
+      localStorage.setItem("currentUser",JSON.stringify(user))
       reset();
       navigate("/");
       toast.success("Signed In successfully!");
@@ -45,7 +46,7 @@ const SignIn = () => {
         </h1>
 
         <form onSubmit={handleSubmit(submitHandler)} className="space-y-5">
-          {/* Email */}
+       
           <div className="relative">
             <i className="ri-mail-fill absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
             <input
@@ -65,7 +66,7 @@ const SignIn = () => {
             )}
           </div>
 
-          {/* Password */}
+         
           <div className="relative">
             <i className="ri-lock-fill absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
             <input
@@ -87,9 +88,9 @@ const SignIn = () => {
             )}
           </div>
 
-          {/* Submit Button */}
+         
      <div className="flex justify-around p-5">
-  {/* Sign In Button */}
+  
   <button
     type="submit"
     className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
@@ -97,9 +98,9 @@ const SignIn = () => {
     Sign In
   </button>
 
-  {/* Sign Out Button */}
+ 
   <button
-    type="button" // ✅ not submit
+    type="button" 
     onClick={handleSignOut}
     className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
   >

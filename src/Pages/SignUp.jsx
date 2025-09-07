@@ -18,8 +18,13 @@ const SignUp = () => {
 
   const submitHandler = (data) => {
     data.id = nanoid();
-    setUserData([...userdata, data]);
+    // setUserData([...userdata, data]);
+     const copyData = [...userdata]
+    copyData.push(data)
+    setUserData(copyData)
+    localStorage.setItem("userdata", JSON.stringify(copyData))
     setCurrentUser(data);
+    localStorage.setItem("currentUser",JSON.stringify(data))
     reset();
     navigate("/");
     toast.success("Signed Up successfully!");
@@ -33,7 +38,7 @@ const SignUp = () => {
         </h1>
 
         <form onSubmit={handleSubmit(submitHandler)} className="space-y-5">
-          {/* Name */}
+          
           <div>
             <input
               type="text"
@@ -46,7 +51,7 @@ const SignUp = () => {
             )}
           </div>
 
-          {/* Email */}
+          
           <div>
             <input
               type="email"
@@ -67,7 +72,7 @@ const SignUp = () => {
             )}
           </div>
 
-          {/* Password */}
+        
           <div>
             <input
               type="password"

@@ -1,13 +1,13 @@
-import React, { useContext, useState } from "react";
-import { recipecontext } from "../Context/RecipeContext";
-import RecipeCard from "../Components/RecipeCard";
+import React, { useState } from 'react'
+import RecipeCard from '../Components/RecipeCard';
 
-const Recipes = () => {
-  const { data } = useContext(recipecontext);
+const Favourites = () => {
+
+  const fav = JSON.parse(localStorage.getItem("fav")) ||[]
+ 
   const [searchTerm, setSearchTerm] = useState("");
 
-  
-  const filteredRecipes = data.filter((recipe) =>
+  const filteredRecipes = fav.filter((recipe) =>
     recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
    
@@ -18,7 +18,7 @@ const Recipes = () => {
         <i className="ri-search-line text-2xl"></i>
         <input
           type="text"
-          placeholder="Search recipes..."
+          placeholder="Search Favourite recipes..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="w-full max-w-md px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -33,13 +33,12 @@ const Recipes = () => {
           ))
         ) : (
           <h2 className="text-red-500 text-lg font-semibold">
-            No recipes found
+            Your favourites list is empty. Start adding some tasty recipes!
           </h2>
         )}
       </div>
     </div>
   );
-};
+}
 
-export default Recipes;
-
+export default Favourites

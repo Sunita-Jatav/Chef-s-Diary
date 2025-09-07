@@ -20,14 +20,14 @@ const UpdateDelete = () => {
       handleSubmit,
       reset,
     } = useForm({defaultValues :{
-      imageUrl : recipe.imageUrl,
-      title : recipe.title,
-      chefName : recipe.chefName,
-      category : recipe.category,
-      description : recipe.description,
-      ingredients : recipe.ingredients,
-      steps : recipe.steps,
-      story : recipe.story
+      imageUrl : recipe?.imageUrl,
+      title : recipe?.title,
+      chefName : recipe?.chefName,
+      category : recipe?.category,
+      description : recipe?.description,
+      ingredients : recipe?.ingredients,
+      steps : recipe?.steps,
+      story : recipe?.story
     }});
 
     const submitHandler = (recipe) => {
@@ -36,6 +36,7 @@ const UpdateDelete = () => {
       const copyData = [...data];
       copyData[index] = {...copyData[index],...recipe}
       setData(copyData)
+      localStorage.setItem("recipes", JSON.stringify(copyData))
       reset(recipe)
       toast.success("recipe Updated Successfully!")
     };
@@ -43,6 +44,7 @@ const UpdateDelete = () => {
   const deleteHandler = (id)=>{
       const filtered = data.filter((recipe) => recipe.id != params.id)
       setData(filtered)
+      localStorage.setItem("recipes", JSON.stringify(filtered))
       toast.success("Recipe Deleted")
       navigate('/recipes')
    }
