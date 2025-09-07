@@ -4,7 +4,7 @@ const Home = () => {
 
   return (
    
-    <div className=" bg-[#0D0D0D] w-full h-screen text-center p-8 relative bg-red-900 flex flex-col items-center justify-center gap-[3rem]">
+    <div className=" bg-[#0D0D0D] w-full h-screen text-center p-8 relative flex flex-col items-center justify-center gap-[3rem]">
       <h1 className='sm:text-6xl text-5xl font-medium tracking-tighter text-white drop-shadow-lg '>
         More than food,<br /> it’s a memory on a plate.
       </h1>
