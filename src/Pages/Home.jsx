@@ -9,7 +9,7 @@ const Home = () => {
         More than food,<br /> it’s a memory on a plate.
       </h1>
 
-      <div className="w-[36rem] h-[10rem] bg-[#151718] bg-opacity-80 absolute 
+      <div className="w-[36rem] h-[10rem] bg-[#151718] bg-opacity-80
                 top-[25%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 
                 shadow-lg overflow-hidden rounded-xl p-4 relative">
 

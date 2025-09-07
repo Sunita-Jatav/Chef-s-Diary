@@ -150,7 +150,7 @@ const CreateRecipe = () => {
           ></textarea>
         </div>
 
-        <button className="bg-white text-black m-5 px-6 py-2 text-xl rounded w-full hover:bg-[#0D0D0D] hover:text-white hover:scale-95 duration-150 transition">
+        <button className="bg-white text-black  px-6 py-2 text-xl rounded w-full hover:bg-[#0D0D0D] hover:text-white hover:scale-95 duration-150 transition">
           Save Recipe
         </button>
       </form>

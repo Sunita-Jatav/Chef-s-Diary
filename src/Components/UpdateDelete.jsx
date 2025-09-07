@@ -50,7 +50,7 @@ const UpdateDelete = () => {
    }
 
   return (
-    <div className='right w-full p-10 font-medium text-xl p-2'>
+    <div className='right w-full p-10 font-medium text-xl '>
     <h1 className="text-4xl font-bold tracking-tighter text-red-700 mb-4">
   Edit or Delete Recipe
 </h1>
